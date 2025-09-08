@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      <div className="flex-col gap-8 flex items-center justify-center h-screen">
+      <div className="flex-col gap-8 flex items-center justify-center">
         <div className="title">
           <h1>Rak Preme</h1>
         </div>

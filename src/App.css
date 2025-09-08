@@ -4,6 +4,9 @@
   padding: 2rem;
   text-align: center;
 }
+body {
+  background-image: url('./assets/rose.JPG');
+}
 
 .logo {
   height: 6em;
