@@ -1,10 +1,7 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
 import { motion } from 'motion/react';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
   const MESSAGE = "We've only spent little time together, but I miss you so much. You've become my favorite thought and I'm always thinking of you.\nI hope you can wait for me.";
 
   return (
