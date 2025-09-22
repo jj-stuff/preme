@@ -6,7 +6,7 @@ import catImage from './assets/cat.png'; // Make sure you add cat.png to your sr
 // Type definition for the anime object from the script
 declare const anime: any;
 
-const MESSAGE = "We haven't spent much time together yet, but I miss you more than I expected. This is my embarrassing love letter in return to yours. \nYou've become my favorite thought, I catch myself thinking of you all the time. When I pass a store, I wonder if there's something in there you'd like. When I eat, I would wonder whether you'd love or hate the taste. And with each day I'll only love you more. I cannot wait to see you again. \nI have to admit, I'm quite romantic. jk haha... maybe not \nLove you.❤️";
+const MESSAGE_PARAGRAPHS = ["We haven't spent much time together yet, but I miss you more than I expected. This is my embarrassing love letter in return to yours.", "You've become my favorite thought, I catch myself thinking of you all the time. When I pass a store, I wonder if there's something in there you'd like. When I eat, I would wonder whether you'd love or hate the taste. And with each day I'll only love you more. I cannot wait to see you again.", "I have to admit, I'm quite romantic. jk haha... maybe not", 'Love you.❤️'];
 
 // --- Love Letter Component ---
 const LoveLetter = ({ onButtonClick }) => (
@@ -15,7 +15,11 @@ const LoveLetter = ({ onButtonClick }) => (
       <h1 className="love-letter-title">Rak Preme</h1>
     </div>
     <div className="px-4 sm:px-8 md:px-16 lg:px-24">
-      <p className="love-letter bg-amber-50">{MESSAGE}</p>
+      <div className="love-letter bg-amber-50">
+        {MESSAGE_PARAGRAPHS.map((paragraph, index) => (
+          <p key={index}>{paragraph}</p>
+        ))}
+      </div>
     </div>
     <div className="flex-row gap-4 flex">
       <button className="love-letter-button" onClick={onButtonClick}>
@@ -61,7 +65,7 @@ const CountdownTimer = () => {
 
   return (
     <div className="countdown-timer">
-      <h2>Until December 20th</h2>
+      <h2>Until We Meet, December 20th</h2>
       <div className="timer">
         {Object.entries(timeLeft).map(([unit, value]) => (
           <div key={unit} className="timer-box">
@@ -100,7 +104,7 @@ const TimeSince = () => {
 
   return (
     <div className="time-since mt-8">
-      <h2>Time Since August 11th</h2>
+      <h2>Time Since --</h2>
       <div className="timer-display">
         <div className="timer-box" style={{ minWidth: '200px' }}>
           <span>{displayValue}</span>
@@ -120,7 +124,7 @@ const TimeSince = () => {
 
 // --- Countdown Page Component ---
 const CountdownPage = () => (
-  <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1.0 }} className="countdown-container">
+  <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="countdown-container">
     <CountdownTimer />
     <TimeSince />
   </motion.div>
@@ -132,37 +136,59 @@ function App() {
   const [showCountdown, setShowCountdown] = useState(false);
 
   const handleTransition = () => {
+    // ✨ CONTROL PANEL APPEARANCE HERE (in milliseconds) ✨
+    const PANEL_APPEAR_DELAY = 500; // Panel will now appear after 2 seconds.
+
     setIsTransitioning(true);
+
+    // --- Start the timer to show the panel ---
+    // This is now independent of the animation's duration or delay.
+    setTimeout(() => {
+      setShowCountdown(true);
+    }, PANEL_APPEAR_DELAY);
 
     const numParticles = 40;
     const particles: HTMLImageElement[] = [];
     const root = document.getElementById('root');
+
+    if (!root) return;
 
     for (let i = 0; i < numParticles; i++) {
       const particle = document.createElement('img');
       particle.src = catImage;
       particle.className = 'cat-particle';
 
-      // Start dead center
       particle.style.left = '50%';
       particle.style.top = '50%';
+      particle.style.transform = 'translate(-50%, -50%)';
 
-      root?.appendChild(particle);
+      root.appendChild(particle);
       particles.push(particle);
     }
 
+    const radius = window.innerWidth / 1.5;
+
+    // --- Start the cat animation ---
     anime({
       targets: particles,
-      translateX: (_, i) => Math.cos((i / numParticles) * 2 * Math.PI) * anime.random(200, window.innerWidth / 2),
-      translateY: (_, i) => Math.sin((i / numParticles) * 2 * Math.PI) * anime.random(200, window.innerHeight / 2),
-      scale: [0.3, 1],
+      translateX: (el, i) => {
+        const angle = (360 / numParticles) * i;
+        const angleInRad = angle * (Math.PI / 180);
+        return radius * Math.cos(angleInRad);
+      },
+      translateY: (el, i) => {
+        const angle = (360 / numParticles) * i;
+        const angleInRad = angle * (Math.PI / 180);
+        return radius * Math.sin(angleInRad);
+      },
+      scale: [0.5, 1.5],
       opacity: [1, 0],
-      duration: 1000, // shorter burst
-      easing: 'easeOutCubic',
-      delay: anime.stagger(10),
+      duration: 3500,
+      easing: 'easeOutExpo',
+      delay: () => Math.random() * 500,
+      // The `complete` callback now ONLY cleans up the particles.
       complete: () => {
         particles.forEach((p) => p.remove());
-        setShowCountdown(true);
       },
     });
   };

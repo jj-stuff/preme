@@ -1,5 +1,6 @@
 #root {
   max-width: 1280px;
+  width: 100%; /* Add this line */
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -19,8 +20,6 @@ body {
 }
 
 .love-letter {
-  background-image: url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yNl9hbl9hbnRpcXVlX3BvcnRyYWl0X29mX2FfYmxvdGNoeV9wYXJjaG1lbnRfY184YWMyYmI0Ny0xYjZkLTQxYjItYTg1ZS00YzYxYWZmYjUzY2FfMS5qcGc.jpg');
-  white-space: pre-line;
   background-size: cover;
   padding: 2rem 3rem;
   border-radius: 5px;
@@ -30,11 +29,24 @@ body {
   font-style: normal;
   font-size: 1.75rem;
   color: #333;
-  line-height: 1.6;
+  text-align: left;
+  line-height: 1.6; /* This controls space INSIDE a paragraph */
+  /* white-space: pre-line; <-- You can remove this now */
+}
+
+/* Add these new rules */
+.love-letter p {
+  margin-bottom: 1em; /* This is your adjustable "new line height" */
+}
+
+.love-letter p:last-child {
+  margin-bottom: 0; /* Removes extra space after the final paragraph */
 }
 
 .love-letter-title {
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Nanum Pen Script', cursive;
+  font-weight: 400;
+  font-style: normal;
   font-size: 6rem;
   color: white;
   text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
@@ -44,10 +56,13 @@ body {
   background-color: #ff69b4; /* hot pink */
   border: 1px solid #e75480;
   border-radius: 50px;
-  padding: 0.8em 1.8em;
-  font-size: 1.1em;
+  font-family: 'Nanum Pen Script', cursive;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0 2rem;
+  padding: 1em 2em;
+  font-size: 1.8em;
   font-weight: 700;
-  font-family: sans-serif;
   cursor: pointer;
   transition: all 0.25s ease-out;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -79,10 +94,12 @@ body {
 
 .countdown-timer h2,
 .time-since h2 {
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Nanum Pen Script', cursive;
+  font-weight: 400;
+  font-style: normal;
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: #ffd700; /* Gold */
+  color: rgb(255, 122, 145);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -128,13 +145,13 @@ body {
 
 .time-since .time-format-buttons button:hover,
 .time-since .time-format-buttons button.active {
-  background-color: #ffd700;
+  background-color: rgb(255, 122, 145); /* hot pink */
   color: black;
 }
 
 .cat-particle {
   position: absolute;
-  width: 80px;
+  width: 250px; /* Increased size */
   height: auto;
   z-index: 100;
   pointer-events: none; /* avoids blocking clicks */
