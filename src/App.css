@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Dancing+Script:wght@400..700&display=swap');
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -9,6 +10,48 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0% 10%;
+}
+
+.love-letter {
+  background-image: url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yNl9hbl9hbnRpcXVlX3BvcnRyYWl0X29mX2FfYmxvdGNoeV9wYXJjaG1lbnRfY184YWMyYmI0Ny0xYjZkLTQxYjItYTg1ZS00YzYxYWZmYjUzY2FfMS5qcGc.jpg');
+  background-size: cover;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.75rem;
+  color: #333;
+}
+
+.love-letter-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 6rem;
+  color: white;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.love-letter-button {
+  background-color: rgba(139, 69, 19, 0.7); /* A semi-transparent brown */
+  border: 1px solid #8b4513;
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.love-letter-button a {
+  color: white;
+  text-decoration: none;
+}
+
+.love-letter-button:hover {
+  background-color: rgba(139, 69, 19, 0.9);
+  border-color: #a0522d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
