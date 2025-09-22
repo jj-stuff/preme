@@ -6,6 +6,9 @@
 }
 body {
   background-image: url('./assets/rose.JPG');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0% 10%;
 }
 
 .logo {
