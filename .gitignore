@@ -1,24 +1,87 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# .gitignore
 
-node_modules
-dist
-dist-ssr
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
 *.local
 
-# Editor directories and files
+# IDE
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS Files
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
+desktop.ini
+
+# Testing
+coverage/
+*.lcov
+.nyc_output/
+
+# Cache
+.npm
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+---
+
+# .prettierignore
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+
+# Cache and temporary files
+*.cache
+*.tmp
+.temp/
+
+# Version control
+.git/
+.gitignore
+
+# Package files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Config files that shouldn't be formatted
+tsconfig.json
+tsconfig.*.json
+
+# Generated files
+*.min.js
+*.min.css

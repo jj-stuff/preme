@@ -51,10 +51,10 @@ const LoveLetter: React.FC<LoveLetterProps> = ({ onButtonClick }) => (
     {/* Action Buttons */}
     <div className="button-container">
       <button className="love-letter-button" onClick={onButtonClick}>
-        I will wait.
+        Preme Rak Jdai
       </button>
       <button className="love-letter-button" onClick={onButtonClick}>
-        I can wait.
+        Preme Love Jdai
       </button>
     </div>
   </motion.div>
